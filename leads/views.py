@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 from .models import Lead, Agent
 from .forms import LeadForm
 
-def landing_page(request):
-    return render(request, "landing.html")
+class LandingPageView(TemplateView):
+    template_name = "landing.html"
 
 def lead_list(request):
     leads = Lead.objects.all()
